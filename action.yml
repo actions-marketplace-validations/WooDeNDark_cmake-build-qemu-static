@@ -1,0 +1,20 @@
+name: 'Cmake build qemu-static'
+description: 'Cmake build with Qemu-static'
+inputs:
+  platform:
+    description: Choose platform (e.g. arm32v8) # All platforms - https://github.com/docker-library/official-images#architectures-other-than-amd64
+    required: true
+  image:
+    description: Choose image (debian or alpine) #Please note that not all platforms have the required images. Check all images needed platform - https://hub.docker.com/u/arm32v5 - for example
+    required: true
+  target:
+    description: Build needed target
+    required: true
+
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.target }}
+    - ${{ inputs.platform }}
+    - ${{ inputs.image }}
