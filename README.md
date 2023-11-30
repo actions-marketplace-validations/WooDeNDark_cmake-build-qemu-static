@@ -26,9 +26,14 @@ Build needed target
 ## Example usage
 ```yaml
 
-uses: WooDenDark/cmake-build-qemu-static
-with:
-  platform: 'arm32v6'
-  image: 'alpine'
-  target: 'all'
+steps:
+  - name: Set up Qemu-static
+    uses: docker/setup-qemu-action@v3
+
+  - name: Build cmake project
+    uses: WooDenDark/cmake-build-qemu-static@latest
+    with:
+      platform: 'arm32v6'
+      image: 'alpine'
+      target: 'all'
 ```
